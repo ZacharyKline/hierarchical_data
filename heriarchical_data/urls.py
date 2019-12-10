@@ -21,7 +21,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.homeview, name='homepage')
+    path('', views.homeview, name='homepage'),
+    path('login/', views.loginview, name='login'),
+    path('logout/', views.logoutview, name='logout'),
+    path('profile/<int:id>', views.ViewProfile.as_view(), name='profile_page'),
+    path('create/', views.FileCreateView.as_view(), name='create_file')
 ]
 
 if settings.DEBUG:
