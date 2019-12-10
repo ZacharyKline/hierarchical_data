@@ -1,15 +1,21 @@
 {% load static %}
 <link rel='stylesheet' href='static/styles.css'>
 <div>
-    <a href='/login/'><button>Login</button></a>
-    <a href='/logout/'><button>Logout</button></a>
+    <div>
+        <a href='/login/'><button>Login</button></a>
+        <a href='/logout/'><button>Logout</button></a>
+    </div>
+    <br>
+    <div>
+        <a href='/create/'><button>Create File</button></a>
+    </div>
 </div>
 {% load mptt_tags %}
 <ul>
     {% recursetree data %}
     <li>
         <div>{{ node.name }}</div>
-        <div> - {{ node.user }}</div>
+        <div> - <a href='/profile/{{node.user.id}}'>{{ node.user }}</a></div>
         {% if not node.is_leaf_node %}
         <ul class="children">
             {{ children }}
